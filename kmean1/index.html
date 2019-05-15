@@ -1,0 +1,782 @@
+
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="Tugas Kuliah Data Mining">
+      
+      
+        <link rel="canonical" href="https:///yusrilx02/170441100056_Moh_Yusril_Ihza_Maulana.github.io/kmean1/">
+      
+      
+        <meta name="author" content="Moh Yusril Ihza Maulana">
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.2.0">
+    
+    
+      
+        <title>Kmean1 - Data Mining</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/application.750b69bd.css">
+      
+        <link rel="stylesheet" href="../assets/stylesheets/application-palette.224b79ff.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#3f51b5">
+      
+    
+    
+      <script src="../assets/javascripts/modernizr.74668098.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../assets/fonts/material-icons.css">
+    
+    
+    
+      
+        
+<script>
+  window.ga = window.ga || function() {
+    (ga.q = ga.q || []).push(arguments)
+  }
+  ga.l = +new Date
+  /* Setup integration and send page view */
+  ga("create", "None", "auto")
+  ga("set", "anonymizeIp", true)
+  ga("send", "pageview")
+  /* Register handler to log search on blur */
+  document.addEventListener("DOMContentLoaded", () => {
+    if (document.forms.search) {
+      var query = document.forms.search.query
+      query.addEventListener("blur", function() {
+        if (this.value) {
+          var path = document.location.pathname;
+          ga("send", "pageview", path + "?q=" + this.value)
+        }
+      })
+    }
+  })
+</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
+    viewBox="0 0 416 448" id="__github">
+  <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+        8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+        18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+        19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+        18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+        304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+        2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+        38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+        37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+        82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+        1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+        0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+        30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+        46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+        99.5z" />
+</svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#pengertian-k-means-clustering" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https:///yusrilx02/170441100056_Moh_Yusril_Ihza_Maulana.github.io" title="Data Mining" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              Data Mining
+            </span>
+            <span class="md-header-nav__topic">
+              Kmean1
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://github.com/yusrilx02/170441100056_Moh_Yusril_Ihza_Maulana" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    170441100056_Moh_Yusril_Ihza_Maulana
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+        
+
+<nav class="md-tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href=".." title="Identitas Penulis" class="md-tabs__link md-tabs__link--active">
+        Identitas Penulis
+      </a>
+    
+  </li>
+
+      
+        
+      
+        
+      
+    </ul>
+  </div>
+</nav>
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https:///yusrilx02/170441100056_Moh_Yusril_Ihza_Maulana.github.io" title="Data Mining" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    Data Mining
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://github.com/yusrilx02/170441100056_Moh_Yusril_Ihza_Maulana" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    170441100056_Moh_Yusril_Ihza_Maulana
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href=".." title="Identitas Penulis" class="md-nav__link">
+      Identitas Penulis
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../kmean/" title="K-Means Clustering" class="md-nav__link">
+      K-Means Clustering
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../knn/" title="K-Nearest Neighbor" class="md-nav__link">
+      K-Nearest Neighbor
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#pengertian-k-means-clustering" title="Pengertian K-Means Clustering" class="md-nav__link">
+    Pengertian K-Means Clustering
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kelebihan-dan-kekurangan-k-means-clustering" title="Kelebihan dan Kekurangan K-Means Clustering" class="md-nav__link">
+    Kelebihan dan Kekurangan K-Means Clustering
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kelebihan-k-means-clustering" title="Kelebihan K-Means Clustering" class="md-nav__link">
+    Kelebihan K-Means Clustering
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kekurangan-k-means-clustering" title="Kekurangan K-Means Clustering" class="md-nav__link">
+    Kekurangan K-Means Clustering
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#algoritma-k-means-clustering" title="Algoritma K-Means Clustering" class="md-nav__link">
+    Algoritma K-Means Clustering
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#langkah-langkah-algortima-k-means-clustering" title="Langkah-langkah algortima K-Means Clustering :" class="md-nav__link">
+    Langkah-langkah algortima K-Means Clustering :
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contoh-perhitungan-k-means-sederhana" title="Contoh Perhitungan K-Means Sederhana" class="md-nav__link">
+    Contoh Perhitungan K-Means Sederhana
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#software-requirements" title="Software Requirements" class="md-nav__link">
+    Software Requirements
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#library-python-yang-digunakan" title="Library Python yang digunakan:" class="md-nav__link">
+    Library Python yang digunakan:
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementasi-k-means-clustering" title="Implementasi K-Means Clustering" class="md-nav__link">
+    Implementasi K-Means Clustering
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#import-library-yang-dibutuhkan" title="Import Library yang dibutuhkan" class="md-nav__link">
+    Import Library yang dibutuhkan
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#memuat-dataset" title="Memuat Dataset" class="md-nav__link">
+    Memuat Dataset
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-preprocessing" title="Data Preprocessing" class="md-nav__link">
+    Data Preprocessing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#membuat-dataframe-baru-dan-memilihnya" title="Membuat dataframe baru dan memilihnya" class="md-nav__link">
+    Membuat dataframe baru dan memilihnya
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#menggunakan-elbow-method-untuk-mencari-jumlah-cluster" title="Menggunakan Elbow method untuk mencari jumlah cluster" class="md-nav__link">
+    Menggunakan Elbow method untuk mencari jumlah cluster
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#menghitung-k-mean" title="Menghitung K-Mean" class="md-nav__link">
+    Menghitung K-Mean
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#referensi" title="Referensi" class="md-nav__link">
+    Referensi
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  <h1>Kmean1</h1>
+                
+                <h2 id="pengertian-k-means-clustering">Pengertian K-Means Clustering<a class="headerlink" href="#pengertian-k-means-clustering" title="Permanent link">&para;</a></h2>
+<p><img alt="assets\images\k-mean.png" src="../assets/images/k-mean.png" /></p>
+<p>Clustering merupakan suatu metode untuk mencari dan mengelompokkan data yang memiliki kemiripan karakteristik (similarity) antara satu data dengan data yang lain. Clustering merupakan salah satu metode data mining yang bersifat tanpa arahan (unsupervised). Yang dimaksud metode unsupervised yaitu metode ini diterapkan tanpa adanya latihan (training) dan guru (teacher) serta tidak memerlukan target output. Ada dua jenis data clustering yang sering dipergunakan dalam  proses pengelompokan data yaitu hierarchical (hirarki) data clustering dan non-hierarchical (non hirarki) data clustering.</p>
+<p>K-Means merupakan salah satu metode data clustering non hirarki yang berusaha mempartisi data yang ada ke dalam bentuk satu atau lebih cluster/kelompok. Metode ini mempartisi data ke dalam cluster/kelompok sehingga data yang memiliki karakteristik yang sama dikelompokkan ke dalam satu cluster yang sama dan data yang mempunyai karakteristik yang berbeda dikelompokkan ke dalam kelompok yang lain. Adapun tujuan dari data clustering ini adalah untuk meminimalisasikan objective function yang diset dalam proses clustering, yang pada umumnya berusaha meminimalisasikan variasi di dalam suatu cluster dan memaksimalisasikan variasi antar cluster.</p>
+<h2 id="kelebihan-dan-kekurangan-k-means-clustering">Kelebihan dan Kekurangan K-Means Clustering<a class="headerlink" href="#kelebihan-dan-kekurangan-k-means-clustering" title="Permanent link">&para;</a></h2>
+<h3 id="kelebihan-k-means-clustering">Kelebihan K-Means Clustering<a class="headerlink" href="#kelebihan-k-means-clustering" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Menggunakan prinsip yang sederhana, dapat dijelaskan dalam non-statistik</li>
+<li>Mudah untuk diimplementasikan dan dijalankan.</li>
+<li>Waktu yang dibutuhkan untuk menjalankan nya relatif cepat</li>
+<li>Sangat fleksibel, dapat dengan mudah diadaptasi.</li>
+<li>Sangat umum digunakan</li>
+</ol>
+<h3 id="kekurangan-k-means-clustering">Kekurangan K-Means Clustering<a class="headerlink" href="#kekurangan-k-means-clustering" title="Permanent link">&para;</a></h3>
+<ol>
+<li>dalam non-statistik  Karena menggunakan k buah acak, tidak di jamin untuk menemukan kumpulan cluster yang optimal</li>
+<li>dapat terjadinya curse of dimensionality, apabila jarak antara cluster yang satu dengan yang lain memiliki banyak dimesi.</li>
+<li>Tidak optimal digunakan untuk data yang jumlahnya terlalu banyak sampai bermiliyar.</li>
+</ol>
+<h2 id="algoritma-k-means-clustering">Algoritma K-Means Clustering<a class="headerlink" href="#algoritma-k-means-clustering" title="Permanent link">&para;</a></h2>
+<h3 id="langkah-langkah-algortima-k-means-clustering">Langkah-langkah algortima K-Means Clustering :<a class="headerlink" href="#langkah-langkah-algortima-k-means-clustering" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Tentukan jumlah cluster(kelompok) yang kita inginkan.</li>
+<li>Inisiasi centroid untuk setiap cluster secara acak. Centroid adalah data yang merepresentasikan suatu kelompok.</li>
+<li>Hitung kedekatan suatu data terhadap centroid, kemudian masukkan data tersebut ke cluster yang centroid-nya memiliki sifat terdekat dengan dirinya(yang nilainya paling kecil).</li>
+<li>Pilih kembali centroid untuk masing-masing cluster ,yaitu <em>mean</em> (rata-rata) nilai data dari setiap cluster yang sama .</li>
+<li>Ulangi langkah ke-3 sampai tidak ada perubahan anggota untuk semua cluster, atau sampai batas yang ditentukan dari perulangan anggota yang sama.</li>
+</ol>
+<h3 id="contoh-perhitungan-k-means-sederhana">Contoh Perhitungan K-Means Sederhana<a class="headerlink" href="#contoh-perhitungan-k-means-sederhana" title="Permanent link">&para;</a></h3>
+<p><img alt="" src="../assets/images/kmean_c1.png" /></p>
+<p>Perhatikan gambar diatas, ada tabel yang mempunyai column X1 dan X2, dimana tabel tersebut akan kita pakai untuk mempelajari k-means clustering.  Pertama-tama kita akan menentukan  jumlah cluster (kelompok) yakni kita tentukan k = 2. tahap selanjutnya adalah inisiasi centroid  karena k = 2 , maka kita akan memilih 2 observasi secara acak dari tabel, yakni A dan C.</p>
+<p><img alt="" src="../assets/images/kmean_c2.png" /></p>
+<p>setelah itu kita akan menghitung jarak antar data dengan centroid yang telah ditentukan, dengan menggunakan formula euclidean distance.
+$$
+\begin{aligned} d(p, q)=d(q, p) &amp;=\sqrt{\left(q_{1}-p_{1}\right)<sup>{2}+\left(q_{2}-p_{2}\right)</sup>{2}+\cdots+\left(q_{n}-p_{n}\right)^{2}} \ &amp;=\sqrt{\sum_{i=1}<sup>{n}\left(q_{1}-p_{i}\right)</sup>{2}} \end{aligned}
+$$
+Maka pertama-tama kita akan menghitung observasi  A dengan centroid 1 :</p>
+<p>=√(1-1)^2 + (1-1)^2</p>
+<p>=√(0)^2 + (0)^2</p>
+<p>=√0</p>
+<p>=0</p>
+<p>Setelah itu menghitung observasi A dengan centroid 2:</p>
+<p>=√(1-0)^2 + (1-2)^2</p>
+<p>=√(1)^2 + (1)^2</p>
+<p>=√2</p>
+<p>=1,4</p>
+<p><img alt="" src="../assets/images/kmean_c4.png" /></p>
+<p>Lakukan perhitungan sampai semua observasi dihitung.</p>
+<p><img alt="" src="../assets/images/kmean_c5.png" /></p>
+<p>Hitung kedekatan suatu data terhadap centroid, kemudian masukkan data tersebut ke cluster yang centroid-nya memiliki sifat terdekat dengan dirinya (yang nilainya paling kecil). Pada observasi A yang paling kecil nilainya adalah 0 maka masuk ke dalam cluster 1.</p>
+<p><img alt="" src="../assets/images/kmean_c6.png" /></p>
+<p>Pilih kembali centroid untuk masing-masing cluster ,yaitu <em>mean</em> (rata-rata) nilai data dari setiap cluster yang sama . observasi A dan B dalam cluster yang sama yakni cluster 1, maka dihitung untuk centroid 1  = (1+1 / 2 , 1+ 0 /2 )  -&gt; (1,0.5). dan centroid 2 = (1.7,3.7).</p>
+<p><img alt="" src="../assets/images/kmean_c7.png" /></p>
+<p>Lakukan penghitungan lagi dengan centroid yang baru.</p>
+<p><img alt="" src="../assets/images/kmean_c8.png" /></p>
+<p>Pilih kembali centroid untuk masing-masing cluster ,yaitu mean (rata-rata) nilai data dari setiap cluster yang sama.  Ulangi sampai tidak ada perubahan anggota untuk semua cluster, atau sampai batas yang ditentukan dari perulangan anggota yang sama.</p>
+<p><img alt="" src="../assets/images/kmean_c9.PNG" /></p>
+<h2 id="software-requirements">Software Requirements<a class="headerlink" href="#software-requirements" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Python 3.0 atau versi yang lebih baru, disini saya menggunakan python 3.7</li>
+<li>IDE Pycharm</li>
+</ol>
+<h3 id="library-python-yang-digunakan">Library Python yang digunakan:<a class="headerlink" href="#library-python-yang-digunakan" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Numpy</li>
+</ul>
+<p>Numpy merupakan sebuah library pada Python yang berfungsi untuk melakukan operasi vektor dan matriks dengan mengolah array dan array multidimensi. Biasanya NumPy digunakan untuk kebutuhan dalam menganalisis data.</p>
+<p>instal numpy:</p>
+<pre class="codehilite"><code>pip install numpy</code></pre>
+
+<ul>
+<li>Pandas</li>
+</ul>
+<p>pandas adalah sebuah librari berlisensi BSD dan open source yang menyediakan struktur data dan analisis data yang mudah digunakan dan berkinerja tinggi untuk bahasa pemrograman Python.</p>
+<p>instal pandas:</p>
+<pre class="codehilite"><code>pip install pandas</code></pre>
+
+<ul>
+<li>Matplotlib</li>
+</ul>
+<p>Matplotlib adalah <em>library</em> paling banyak digunakan oleh <em>data science</em> untuk menyajikan datanya ke dalam visual yang lebih baik.</p>
+<p>instal matplotlib:</p>
+<pre class="codehilite"><code>pip install matplotlib</code></pre>
+
+<ul>
+<li>Scikit Learn </li>
+</ul>
+<p>Machine learning ada yang berbasis statistika ada juga yang tidak. Salah satunya adalah support vector machine dan regresi linier. Mungkin bagi sebagian orang sudah biasa menulis sendiri library untuk implementasi kedua algoritma tadi. Tapi untuk membuatnya dalam waktu singkat tentu butuh waktu yang tidak sedikit pula.</p>
+<p>Scikit-Learn memberikan sejumlah fitur untuk keperluan data science seperti:</p>
+<ul>
+<li>Algoritma Regresi</li>
+<li>Algoritma Naive Bayes</li>
+<li>Algoritma Clustering</li>
+<li>Algoritma Decision Tree</li>
+<li>Parameter Tuning</li>
+<li>Data Preprocessing Tool</li>
+<li>Export / Import Model</li>
+<li>Machine learning pipeline
+    dan lainnya</li>
+</ul>
+<p>instal Scikit Learn :</p>
+<pre class="codehilite"><code>pip install scikit-learn</code></pre>
+
+<h2 id="implementasi-k-means-clustering">Implementasi K-Means Clustering<a class="headerlink" href="#implementasi-k-means-clustering" title="Permanent link">&para;</a></h2>
+<h3 id="import-library-yang-dibutuhkan">Import Library yang dibutuhkan<a class="headerlink" href="#import-library-yang-dibutuhkan" title="Permanent link">&para;</a></h3>
+<p>Mengimportkan library untuk mendukung implementasi k means clustering </p>
+<pre class="codehilite"><code class="language-python">import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.preprocessing import StandardScaler
+from sklearn.cluster import KMeans</code></pre>
+
+<h3 id="memuat-dataset">Memuat Dataset<a class="headerlink" href="#memuat-dataset" title="Permanent link">&para;</a></h3>
+<p>Mengimport dataset yang digunakan untuk pengimplemtasian k means clustering </p>
+<p>dataset bisa didownload <a href="https://github.com/yusrilx02/K-Mean-Clustering-E-Commerce-Data-Actual-transactions-from-UK-retailer/blob/master/data.csv">disini</a></p>
+<pre class="codehilite"><code class="language-python">dataset=pd.read_csv("../data.csv",encoding = "ISO-8859-1")
+dataset.shape</code></pre>
+
+<h3 id="data-preprocessing">Data Preprocessing<a class="headerlink" href="#data-preprocessing" title="Permanent link">&para;</a></h3>
+<p>Menghilangkan duplikat entri pada dataset.</p>
+<pre class="codehilite"><code class="language-python">print (dataset.duplicated().sum())
+dataset.drop_duplicates(inplace = True)
+dataset.shape</code></pre>
+
+<p>Menghilangkan missing value di kolom customer id.</p>
+<pre class="codehilite"><code class="language-python">dataset.dropna(axis = 0, subset =['CustomerID'], inplace = True)
+dataset.shape</code></pre>
+
+<p>mengecek data apakah ada yg null. jika tidak ada yang null bisa di comment (#)</p>
+<pre class="codehilite"><code class="language-python">print (pd.DataFrame(dataset.isnull().sum()))</code></pre>
+
+<p>menghilangkan order yang dicancel.</p>
+<pre class="codehilite"><code class="language-python">dataset = dataset[(dataset.InvoiceNo).apply(lambda x:( 'C' not in x))]
+dataset.shape
+# print(dataset.shape)
+df_customerid_groups=dataset.groupby("CustomerID")</code></pre>
+
+<h3 id="membuat-dataframe-baru-dan-memilihnya">Membuat dataframe baru dan memilihnya<a class="headerlink" href="#membuat-dataframe-baru-dan-memilihnya" title="Permanent link">&para;</a></h3>
+<p>Membuat dataframe baru 'Quantity', 'UnitPrice', 'CustomerID'.</p>
+<pre class="codehilite"><code class="language-python">df_cluster=pd.DataFrame(columns=['Quantity','UnitPrice','CustomerID'])
+count=0
+for k,v in (df_customerid_groups):
+    df_cluster.loc[count] = [(v['Quantity'].sum()), v['UnitPrice'].sum(), k]
+    count+=1
+df_cluster.shape</code></pre>
+
+<p>disini kita hanya memakai kolom  'Quantity',  'UnitPrice' untuk di kelompokan</p>
+<pre class="codehilite"><code class="language-python">X = df_cluster.iloc[:, [0, 1]].values #mengambil data</code></pre>
+
+<h3 id="menggunakan-elbow-method-untuk-mencari-jumlah-cluster">Menggunakan Elbow method untuk mencari jumlah cluster<a class="headerlink" href="#menggunakan-elbow-method-untuk-mencari-jumlah-cluster" title="Permanent link">&para;</a></h3>
+<p>Menggunakan elbow method untuk mencari jumlah cluster yang ideal kemudian diplot</p>
+<pre class="codehilite"><code class="language-python">for i in range(1,11): #
+    kmeans = KMeans(n_clusters = i, init ='k-means++',max_iter=300,n_init=10)
+    kmeans.fit(X)
+    wcss.append(kmeans.inertia_)
+plt.plot(range(1,11) , wcss)
+plt.title('The Elbow Method')
+plt.xlabel('Jumlah Kelompok Customer (kelompok jenis customer)')
+plt.ylabel('With in cluster sum of squers(WCSS)')
+plt.show()</code></pre>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Keterangan</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>init</td>
+<td>Metode inisialisasi, default ke ‘k-means ++’:</td>
+</tr>
+<tr>
+<td>n_cluster</td>
+<td>Jumlah cluster serta jumlah centroid yang dihasilkan</td>
+</tr>
+<tr>
+<td>k-mean++</td>
+<td>metode inisialisasi acak untuk centroid</td>
+</tr>
+<tr>
+<td>max_iter</td>
+<td>Jumlah maksimum iterasi dari algoritma k-means untuk sekali jalan</td>
+</tr>
+<tr>
+<td>n_init</td>
+<td>Jumlah waktu algoritma k-means akan dijalankan dengan centroid yang berbeda.</td>
+</tr>
+</tbody>
+</table>
+<p>Hasil ploting elbow method:</p>
+<p><img alt="" src="E:/Semester%204/data%20mining/github%20pages/KMEAN/docs/assets/images/kmean_elbow.PNG" /></p>
+<h3 id="menghitung-k-mean">Menghitung K-Mean<a class="headerlink" href="#menghitung-k-mean" title="Permanent link">&para;</a></h3>
+<p>Mefitting k-mean ke dataset</p>
+<pre class="codehilite"><code class="language-python">kmeans = KMeans(n_clusters = int(input("Masukan Jumlah Clusters:")), init = 'k-means++')
+y_kmeans = kmeans.fit_predict(X)</code></pre>
+
+<p>mengvisualisasikan cluster</p>
+<pre class="codehilite"><code class="language-python">plt.scatter(X[y_kmeans == 0, 0], X[y_kmeans == 0, 1], s = 50, c = 'red', label = 'Customer Type 1')
+plt.scatter(X[y_kmeans == 1, 0], X[y_kmeans == 1, 1], s = 50, c = 'blue', label = 'Customer Type 2')
+plt.scatter(X[y_kmeans == 2, 0], X[y_kmeans == 2, 1], s = 50, c = 'green', label = 'Customer Type 3')
+plt.scatter(kmeans.cluster_centers_[:, 0], kmeans.cluster_centers_[:, 1], s = 100,marker='x', c = 'black', label = 'Centroids')
+plt.title('Jumlah Kelompok Customer (kelompok jenis customer')
+plt.xlabel('Jumlah barang yang Dibeli(Quantity)')
+plt.ylabel('Harga produk per unit dalam sterling(Unit Price)')
+plt.legend()
+plt.show()</code></pre>
+
+<p>Masukan jumlah cluster disini saya isikan 3</p>
+<p><img alt="" src="E:/Semester%204/data%20mining/github%20pages/KMEAN/docs/assets/images/kmean_k.PNG" /></p>
+<p>Hasilnya :</p>
+<p><img alt="" src="E:/Semester%204/data%20mining/github%20pages/KMEAN/docs/assets/images/kmean_hasil.PNG" /></p>
+<p><strong>Dataset dan Program bisa didownload dan dilihat</strong> <a href="https://github.com/yusrilx02/K-Mean-Clustering-E-Commerce-Data-Actual-transactions-from-UK-retailer">disini</a></p>
+<h2 id="referensi">Referensi<a class="headerlink" href="#referensi" title="Permanent link">&para;</a></h2>
+<ul>
+<li>informatika. 2017. Algoritma K-Means Clustering di <a href="https://informatikalogi.com/algorithm/k-means/">https://informatikalogi.com/algorithm/k-means/</a></li>
+<li>Naftali Harris. 2017. Visualizing K-Means Clustering di <a href="https://www.naftaliharris.com/blog/visualizing-k-means-clustering/">https://www.naftaliharris.com/blog/visualizing-k-means-clustering/</a></li>
+<li>Mubaris NK. 2017. K-Means Clustering in Python di <a href="https://mubaris.com/posts/kmeans-clustering/">https://mubaris.com/posts/kmeans-clustering/</a></li>
+</ul>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2019 Moh Yusril Ihza Maulana
+          </div>
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+  <div class="md-footer-social">
+    <link rel="stylesheet" href="../assets/fonts/font-awesome.css">
+    
+      <a href="" class="md-footer-social__link fa fa-globe"></a>
+    
+      <a href="" class="md-footer-social__link fa fa-github-alt"></a>
+    
+      <a href="" class="md-footer-social__link fa fa-twitter"></a>
+    
+      <a href="" class="md-footer-social__link fa fa-linkedin"></a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/application.8c0d971c.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:".."}})</script>
+      
+    
+  </body>
+</html>
