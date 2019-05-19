@@ -1019,19 +1019,10 @@
 <li>CART (Klasifikasi dan Pohon Regresi) menggunakan metode Gini untuk membuat pemisahan biner.</li>
 </ol>
 <h4 id="rumus-gini-index"><strong>Rumus Gini Index</strong><a class="headerlink" href="#rumus-gini-index" title="Permanent link">&para;</a></h4>
-<div>
-<div class="MathJax_Preview">
-\operatorname{Gini}(\mathrm{D})=1-\sum_{\mathrm{i}=1}^{m} \mathrm{Pi}^{2}
-</div>
-<script type="math/tex; mode=display">
-\operatorname{Gini}(\mathrm{D})=1-\sum_{\mathrm{i}=1}^{m} \mathrm{Pi}^{2}
-</script>
-</div>
+<p><img alt="" src="../assets/images/gini1.webp" /></p>
 <p>pi adalah probabilitas bahwa sebuah tuple dalam D milik kelas Ci.</p>
-<p>Weighted Gini untuk Pemisahan:
-$$
-<span><span class="MathJax_Preview">\operatorname{Gini}_{\mathrm{A}}(\mathrm{D})=\frac{|D 1|}{|D|} \operatorname{Gini}\left(\mathrm{D}_{1}\right)+\frac{|D 2|}{|D|} \operatorname{Gini}\left(\mathrm{D}_{2}\right)</span><script type="math/tex">\operatorname{Gini}_{\mathrm{A}}(\mathrm{D})=\frac{|D 1|}{|D|} \operatorname{Gini}\left(\mathrm{D}_{1}\right)+\frac{|D 2|}{|D|} \operatorname{Gini}\left(\mathrm{D}_{2}\right)</script></span>
-$$</p>
+<p>Weighted Gini untuk Pemisahan:</p>
+<p><img alt="" src="../assets/images/gini2.webp" /></p>
 <h4 id="langkah-langkah-untuk-menghitung-gini-untuk-pemisahan"><strong>Langkah-langkah untuk Menghitung Gini untuk pemisahan</strong><a class="headerlink" href="#langkah-langkah-untuk-menghitung-gini-untuk-pemisahan" title="Permanent link">&para;</a></h4>
 <ol>
 <li>Hitung Gini untuk sub-node, menggunakan rumus jumlah kuadrat probabilitas untuk keberhasilan dan kegagalan (p² + q²).</li>
